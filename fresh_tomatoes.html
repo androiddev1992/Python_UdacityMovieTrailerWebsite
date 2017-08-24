@@ -1,0 +1,217 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <style type="text/css" media="screen">
+        body {
+            padding-top: 80px;
+        }
+        #trailer .modal-dialog {
+            margin-top: 200px;
+            width: 640px;
+            height: 480px;
+        }
+        .hanging-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            z-index: 9001;
+        }
+        #trailer-video {
+            width: 100%;
+            height: 100%;
+        }
+        .movie-tile {
+            margin-bottom: 20px;
+            padding 20px 0;
+        }
+        .movie-tile:hover {
+            background-color: #EEE;
+            cursor: pointer;
+        }
+        .scale-media {
+            padding-bottom: 56.25%;
+            position: relative;
+        }
+        .scale-media iframe {
+            border: none;
+            height: 100%;
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+            background-color: white;
+        }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+        // Pause the video when the modal is closed
+        $(document).on('click', '.hanging-close, .modal-backdrop, .modal', function (event) {
+            // Remove the src so the player itself gets removed, as this is the only
+            // reliable way to ensure the video stops playing in IE
+            $("#trailer-video-container").empty();
+        });
+        // Start playing the video whenever the trailer modal is opened
+        $(document).on('click', '.movie-tile', function (event) {
+            var trailerYouTubeId = $(this).attr('data-trailer-youtube-id')
+            var sourceUrl = 'http://www.youtube.com/embed/' + trailerYouTubeId + '?autoplay=1&html5=1';
+            $("#trailer-video-container").empty().append($("<iframe></iframe>", {
+              'id': 'trailer-video',
+              'type': 'text-html',
+              'src': sourceUrl,
+              'frameborder': 0
+            }));
+        });
+        // Animate in the movies when the page loads
+        $(document).ready(function () {
+          $('.movie-tile').hide().first().show("fast", function showNext() {
+            $(this).next("div").show("fast", showNext);
+          });
+        });
+    </script>
+</head>
+
+  <body>
+    <!-- Trailer Video Modal -->
+    <div class="modal" id="trailer">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <a href="#" class="hanging-close" data-dismiss="modal" aria-hidden="true">
+            <img src="https://lh5.ggpht.com/v4-628SilF0HtHuHdu5EzxD7WRqOrrTIDi_MhEG6_qkNtUK5Wg7KPkofp_VJoF7RS2LhxwEFCO1ICHZlc-o_=s0#w=24&h=24"/>
+          </a>
+          <div class="scale-media" id="trailer-video-container">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Page Content -->
+    <div class="container">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Fresh Tomatoes Movie Trailers</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="KYz2wyBy3kc" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/1/13/Toy_Story.jpg" width="220" height="342">
+    <h2>Toy Story</h2>
+    <p><b>Rating:</b> 8.3/10</p>
+    <p><b>Genre:</b> Drama, Action, Adventure</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTQ2MjMwNDA3Nl5BMl5BanBnXkFtZTcwMTA2NDY3NQ@@._V1_UY317_CR2,0,214,317_AL_.jpg" width="32" height"32" alt="Tom Hanks"> Tom Hanks
+</span>
+
+<span class="person">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Tim_Allen_cropped.jpg" width="32" height"32" alt="Tim Allen"> Tim Allen
+</span>
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="5PSNL1qE6VY" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/a/a1/Avatar-video-game-cover.jpg" width="220" height="342">
+    <h2>Avatar</h2>
+    <p><b>Rating:</b> 7.8/10</p>
+    <p><b>Genre:</b> Drama, Action, Adventure</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMjA4NDk1NTA1OV5BMl5BanBnXkFtZTcwMTIzMjQ4Ng@@._V1_UY1200_CR121,0,630,1200_AL_.jpg" width="32" height"32" alt="Zoe Saldana"> Zoe Saldana
+</span>
+
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTc5NTMyMjIwMV5BMl5BanBnXkFtZTcwNTMyNjYwMw@@._V1_UY317_CR6,0,214,317_AL_.jpg" width="32" height"32" alt="Sam Worthington"> Sam Worthington
+</span>
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="wZdpNglLbt8" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/7/71/Finding_Nemo_Coverart.png" width="220" height="342">
+    <h2>Finding Nemo</h2>
+    <p><b>Rating:</b> 8.1/10</p>
+    <p><b>Genre:</b> Drama, Action, Adventure</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="http://static.tvgcdn.net/mediabin/showcards/celebs/d-f/thumbs/ellen-degeneres_sc_768x1024.png" width="32" height"32" alt="Ellen DeGeneres"> Ellen DeGeneres
+</span>
+
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk1NTY1OTgyMV5BMl5BanBnXkFtZTcwMTE2NjE0Nw@@._V1_UY317_CR4,0,214,317_AL_.jpg" width="32" height"32" alt="Alexander Gould"> Alexander Gould
+</span>
+
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTM4MzEwMTMxN15BMl5BanBnXkFtZTcwNTQwMTc2NQ@@._V1_UY317_CR4,0,214,317_AL_.jpg" width="32" height"32" alt="Albert Brooks"> Albert Brooks
+</span>
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="c3sBBRxDAqk" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/5/50/RatatouillePoster.jpg" width="220" height="342">
+    <h2>Ratatouille</h2>
+    <p><b>Rating:</b> 8.0/10</p>
+    <p><b>Genre:</b> Drama, Action, Adventure</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTk5Mzg1ODcyNV5BMl5BanBnXkFtZTcwMjU1ODkyMw@@._V1_UY317_CR13,0,214,317_AL_.jpg" width="32" height"32" alt="Brad Bird"> Brad Bird
+</span>
+
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTA1OTM4MDg2NzNeQTJeQWpwZ15BbWU3MDk0NDA2MTM@._V1_UY317_CR1,0,214,317_AL_.jpg" width="32" height"32" alt="Patton Oswalt"> Patton Oswalt
+</span>
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="p9X16KPOgFI" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/Robots2005Poster.jpg" width="220" height="342">
+    <h2>Robots</h2>
+    <p><b>Rating:</b> 6.3/10</p>
+    <p><b>Genre:</b> Drama, Action, Adventure</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BMTg1MjQ0MDg0Nl5BMl5BanBnXkFtZTcwNjYyNjI5Mg@@._V1_UX214_CR0,0,214,317_AL_.jpg" width="32" height"32" alt="Ewan McGregor"> Ewan McGregor
+</span>
+
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNTYzMjc2Mjg4MF5BMl5BanBnXkFtZTcwODc1OTQwNw@@._V1_UX214_CR0,0,214,317_AL_.jpg" width="32" height"32" alt="Robin Williams"> Robin Williams
+</span>
+</p>
+</div>
+
+<div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="eOrNdBpGMv8" data-toggle="modal" data-target="#trailer">
+    <img src="https://upload.wikimedia.org/wikipedia/en/f/f9/TheAvengers2012Poster.jpg" width="220" height="342">
+    <h2>The Avengers</h2>
+    <p><b>Rating:</b> 8.1/10</p>
+    <p><b>Genre:</b> Action, Superhero, Fictional</p>
+    <p><b>Starring:</b> 
+<span class="person">
+    <img src="https://images-na.ssl-images-amazon.com/images/M/MV5BNzg1MTUyNDYxOF5BMl5BanBnXkFtZTgwNTQ4MTE2MjE@._V1_UX214_CR0,0,214,317_AL_.jpg" width="32" height"32" alt="Robert Downey Jr."> Robert Downey Jr.
+</span>
+
+<span class="person">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Hemsworth_TFF_%28cropped%29.jpg/170px-Hemsworth_TFF_%28cropped%29.jpg" width="32" height"32" alt="Chris Hemsworth"> Chris Hemsworth
+</span>
+
+<span class="person">
+    <img src="https://pbs.twimg.com/profile_images/605082381528096769/gt_sJRot.png" width="32" height"32" alt="Chris Evans"> Chris Evans
+</span>
+
+<span class="person">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Goldene_Kamera_2012_-_Scarlett_Johansson_3_%28cropped%29.JPG/170px-Goldene_Kamera_2012_-_Scarlett_Johansson_3_%28cropped%29.JPG" width="32" height"32" alt="Scarlet Johansson"> Scarlet Johansson
+</span>
+</p>
+</div>
+
+    </div>
+  </body>
+</html>
