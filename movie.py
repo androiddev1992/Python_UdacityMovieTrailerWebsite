@@ -48,6 +48,7 @@ class Movie:
 
         return list.rstrip(", ")
 
+
 class Actors:
     """This class provides a way to store information about actors"""
 
